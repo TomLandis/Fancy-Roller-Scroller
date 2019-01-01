@@ -56,7 +56,15 @@ function addItem () {
       output.push(targ);
     }
     console.log(output);
-    //this is where we put
+    jQuery.ajax({
+      type: 'POST',
+      url: './wp-content/plugins/Fancy-Roller-Scroller/FancyRollerScroller.php',
+      data: output,
+      success: function(response) {
+          $('#result').html(response);
+      }
+  });
+
   }
   
   document.getElementById('addItemButton').addEventListener('click', addItem);
