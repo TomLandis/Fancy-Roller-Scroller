@@ -53,4 +53,26 @@ function my_plugin_options() {
 	
 }
 /** The next step is to make the save button write the options to the database */
-/** I 100% agree that the 'custom post type' route is a MUCH better approach.  I just want the quickest path to a working prototype so I starting building in a 'one list for the whole site' way.  I know this is far from idea.  My plan is to refactor once I have a working prototype.  If you think it's better to rip out what I've got so far that's totally cool too.  I'm down for whatever approach you think is best.  Thanks so much for your help on this.  The ideas you've thrown out already have been super helpful and I'm very motiviated to complete this project now!  Thanks! */
+/** I 100% agree that the 'custom post type' route is a MUCH better approach. 
+ *  I just want the quickest path to a working prototype so I starting building 
+ * in a 'one list for the whole site' way.  I know this is far from idea. 
+ *  My plan is to refactor once I have a working prototype. 
+ *  If you think it's better to rip out what I've got so far that's totally cool too.  
+ * I'm down for whatever approach you think is best.  Thanks so much for your help on this. 
+ *  The ideas you've thrown out already have been super helpful and 
+ * I'm very motiviated to complete this project now!  Thanks! */
+
+
+add_action( 'wp_ajax_my_action', 'my_action' );
+
+function my_action() {
+	global $wpdb; // this is how you get access to the database
+
+	$whatever = intval( $_POST['whatever'] );
+
+	$whatever += 10;
+
+        echo $whatever;
+
+	wp_die(); // this is required to terminate immediately and return a proper response
+}
