@@ -81,6 +81,98 @@ function my_action() {
 
 //[fancy_roller_scroller]
 function fancy_roller_scroller( $atts ){
-	return "almost there";
+	$thelist = get_option('ListOfStuff');
+	return '<style>
+.outer,
+#listOfThings p {
+  text-align: center;
+}
+.outer h1 {
+  padding-top: 100px;
+}
+#inHere {
+  position: relative;
+  opacity: 0;
+  top: 50px;
+  font-size: 200%;
+}
+#listOfThings {
+  position: relative;
+}
+#listOfThings p {
+  margin: 0 !important;
+  padding: 0;
+  position: absolute;
+  font-size: 1em;
+  margin-bottom: -2em;
+  opacity: 0;
+}
+.outer{
+}
+	</style>
+	
+	<div class="outer frs-list-wrap">
+	<h1 id="topText" class="topText frs-top-text">' $thelist[0]; '</h1>
+	<div id="listOfThings">
+	  <div id="inHere" class="listItem"> &nbsp; </div>
+	  <p class="frs-list-item" id="thing1">products</p>
+	  <p class="frs-list-item" id="thing2">solutions</p>
+	  <p class="frs-list-item" id="thing3">connections</p>
+	   <p class="frs-list-item" id="thing4">designs</p>
+	  <p class="frs-list-item" id="thing5">game changers</p>
+	</div>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type="text/javascript">
+	var listo = document.getElementById("listOfThings");
+
+var numOfItems = listo.children.length - 1;
+let iter = 1;
+function sliderOut() {
+  $("#inHere").animate(
+    {
+      opacity: 0,
+      top: "-50px"
+    },
+    250,
+    function() {
+      document.getElementById("inHere").style.top = "50px";
+      setTimeout(function() {changer();}, 10);
+    }
+  );
+}
+function sliderUp() {
+  $("#inHere").animate(
+    {
+      opacity: 1,
+      top: "0px"
+    },
+    250,
+    function() {
+    }
+  );
+}
+function changer() {
+ 
+  let target = "thing" + iter;
+  let targ = document.getElementById(target);
+  document.getElementById("inHere").innerHTML = targ.innerHTML;
+
+  sliderUp();
+
+  setTimeout(function() {
+    sliderOut();
+    if (iter == numOfItems) {
+      iter = 1;
+    } else {
+      iter++;
+    }
+  }, 1400);
+}
+
+changer();
+
+
+	</script>	
+	';
 }
 add_shortcode( 'fancy_roller_scroller', 'fancy_roller_scroller' );
