@@ -68,11 +68,19 @@ add_action( 'wp_ajax_my_action', 'my_action' );
 function my_action() {
 	global $wpdb; // this is how you get access to the database
 
-	$whatever = intval( $_POST['whatever'] );
+	$whatever =  $_POST['whatever'];
 
-	$whatever += 10;
+	update_option('ListOfStuff', $whatever);
 
-        echo $whatever;
+        echo 'List updated!';
 
 	wp_die(); // this is required to terminate immediately and return a proper response
 }
+
+/** Now I'll implement a shortcode with the scroller itself imbeded within */
+
+//[fancy_roller_scroller]
+function fancy_roller_scroller( $atts ){
+	return "almost there";
+}
+add_shortcode( 'fancy_roller_scroller', 'fancy_roller_scroller' );
