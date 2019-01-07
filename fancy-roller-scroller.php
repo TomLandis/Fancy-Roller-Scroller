@@ -26,7 +26,7 @@ function my_plugin_menu() {
 }
 /** Save Initial values of list into database */
 function activateFancyRoller(){
-	add_option( 'ListOfStuff', ['Take a look at', 'this', 'that', 'all the stuff']);
+	add_option( 'ListOfStuff', ['Gimmie', 'some truth', 'a break']);
 }
 
 register_activation_hook( __FILE__, 'activateFancyRoller');
@@ -82,6 +82,11 @@ function my_action() {
 //[fancy_roller_scroller]
 function fancy_roller_scroller( $atts ){
 	$thelist = get_option('ListOfStuff');
+	$theNum = count($thelist);
+	$formatedList = '';
+	for($i=1;$i< $theNum;$i++) {
+$formatedList = $formatedList.'<p class="frs-list-item" id="thing'.$i.'">'.$thelist[$i].'</p>';
+	}
 	return '<style>
 .outer,
 #listOfThings p {
@@ -112,14 +117,10 @@ function fancy_roller_scroller( $atts ){
 	</style>
 	
 	<div class="outer frs-list-wrap">
-	<h1 id="topText" class="topText frs-top-text">' $thelist[0]; '</h1>
+	<h1 id="topText" class="topText frs-top-text">'.$thelist[0].'</h1>
 	<div id="listOfThings">
 	  <div id="inHere" class="listItem"> &nbsp; </div>
-	  <p class="frs-list-item" id="thing1">products</p>
-	  <p class="frs-list-item" id="thing2">solutions</p>
-	  <p class="frs-list-item" id="thing3">connections</p>
-	   <p class="frs-list-item" id="thing4">designs</p>
-	  <p class="frs-list-item" id="thing5">game changers</p>
+	 '.$formatedList.'
 	</div>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
@@ -176,3 +177,10 @@ changer();
 	';
 }
 add_shortcode( 'fancy_roller_scroller', 'fancy_roller_scroller' );
+
+/** Oustanding Work: 1) message to user telling them how to use short code, possibly with copy/paste.  
+ * Styling of settings page!  
+ * Message to user about css-classes for styling!
+ * Donation through payPal
+ * 
+ */
