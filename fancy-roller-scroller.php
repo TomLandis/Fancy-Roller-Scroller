@@ -6,6 +6,7 @@
  * Author: Tom Landis
  * Version: 0.0.1
  * Author URI: https://iwillmakeyour.website
+ * License: GPLv2 or later
  * Text Domain: fancy-roller-scroller
  *
 
@@ -27,6 +28,7 @@ function my_plugin_menu() {
 /** Save Initial values of list into database */
 function activateFancyRoller(){
 	add_option( 'ListOfStuff', ['Gimmie', 'some truth', 'a break']);
+	update_option('ListOfStuff', ['Gimmie', 'some truth', 'a break']);
 }
 
 register_activation_hook( __FILE__, 'activateFancyRoller');
@@ -181,6 +183,6 @@ add_shortcode( 'fancy_roller_scroller', 'fancy_roller_scroller' );
 /** Oustanding Work: 1) message to user telling them how to use short code, possibly with copy/paste.  
  * Styling of settings page!  
  * Message to user about css-classes for styling!
- * Donation through payPal
+ * Donation through payPal?
  * 
  */
