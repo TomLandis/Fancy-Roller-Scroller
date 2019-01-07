@@ -83,6 +83,7 @@ function my_action() {
 
 //[fancy_roller_scroller]
 function fancy_roller_scroller( $atts ){
+	wp_enqueue_script('jquery');
 	$thelist = get_option('ListOfStuff');
 	$theNum = count($thelist);
 	$formatedList = '';
@@ -124,14 +125,17 @@ $formatedList = $formatedList.'<p class="frs-list-item" id="thing'.$i.'">'.$thel
 	  <div id="inHere" class="listItem"> &nbsp; </div>
 	 '.$formatedList.'
 	</div>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type="text/javascript">
+	window.onload = function() {
 	var listo = document.getElementById("listOfThings");
 
 var numOfItems = listo.children.length - 1;
 let iter = 1;
+
+
+	
 function sliderOut() {
-  $("#inHere").animate(
+  jQuery("#inHere").animate(
     {
       opacity: 0,
       top: "-50px"
@@ -144,7 +148,7 @@ function sliderOut() {
   );
 }
 function sliderUp() {
-  $("#inHere").animate(
+  jQuery("#inHere").animate(
     {
       opacity: 1,
       top: "0px"
@@ -173,9 +177,8 @@ function changer() {
 }
 
 changer();
-
-
-	</script>	
+}
+</script>	
 	';
 }
 add_shortcode( 'fancy_roller_scroller', 'fancy_roller_scroller' );
