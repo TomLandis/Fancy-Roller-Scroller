@@ -23,7 +23,7 @@ add_action( 'admin_menu', 'fancy_roller_scroller_menu' );
 
 
 function fancy_roller_scroller_menu() {
-	add_options_page( 'My Plugin Options', 'Fancy Roller Scroller', 'manage_options', 'my-unique-identifier', 'fancy_rs_options' );
+	add_options_page( 'My Plugin Options', 'Fancy Roller Scroller', 'manage_options', 'fancy-roller-scroller-setup', 'fancy_roller_scroller_options' );
 }
 /** Save Initial values of list into database */
 function activateFancyRoller(){
@@ -33,7 +33,7 @@ function activateFancyRoller(){
 
 register_activation_hook( __FILE__, 'activateFancyRoller');
 /** pull details from DB */
-function fancy_rs_options() {
+function fancy_roller_scroller_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
@@ -59,19 +59,42 @@ function fancy_rs_options() {
 	echo '<button style="font-size:1.6em; background-color:#296d51; color:white; padding: 12px; margin: 5px; border-radius:4px;"  id="addItemButton">Add Another item to the list</button><button style="font-size:1.6em; background-color:#003489; color:white; padding: 12px; margin: 5px; border-radius:4px;" id="saveChanges">SAVE</button>';
 	
 }
+/** The next step is to make the save button write the options to the database */
+/** I 100% agree that the 'custom post type' route is a MUCH better approach. 
+ *  I just want the quickest path to a working prototype so I starting building 
+ * in a 'one list for the whole site' way.  I know this is far from idea. 
+ *  My plan is to refactor once I have a working prototype. 
+ *  If you think it's better to rip out what I've got so far that's totally cool too.  
+ * I'm down for whatever approach you think is best.  Thanks so much for your help on this. 
+ *  The ideas you've thrown out already have been super helpful and 
+ * I'm very motiviated to complete this project now!  Thanks! */
 
-add_action( 'wp_ajax_my_action', 'fancy_rs_update_list' );
 
-function fancy_rs_update_list() {
+add_action( 'wp_ajax_fancy_roll_scroll_update', 'fancy_roll_scroll_update' );
+
+function fancy_roll_scroll_update() {
 	global $wpdb; // this is how you get access to the database
 
-	$whatever =  $_POST['whatever'];
+	$frs_new_list =  $_POST['frs_new_list'];
+/**Time to Sanitize the data.  For safety, for security, for the republic. */
+$white_listed_list = [];
+$frs_list_len = count($frs_new_list);
+for($i=0;$i<$frs_list_len;$i++){
+  $safe = sanitize_text_field($frs_new_list[$i]);
+$white_listed_list[] = $safe;
+}
+if(current_user_can('edit_pages')){
+  update_option('ListOfStuff', $white_listed_list);
 
-	update_option('ListOfStuff', $whatever);
+  echo 'List updated!';
 
-        echo 'List updated!';
+wp_die(); // this is required to terminate immediately and return a proper response
+}else{
 
-	wp_die(); // this is required to terminate immediately and return a proper response
+  echo 'You lack permission to edit pages, contact your administrator.';
+
+}  
+
 }
 
 /** Now I'll implement a shortcode with the scroller itself imbeded within */
@@ -177,10 +200,3 @@ changer();
 	';
 }
 add_shortcode( 'fancy_roller_scroller', 'fancy_roller_scroller' );
-
-/** Oustanding Work: 1) message to user telling them how to use short code, possibly with copy/paste.  
- * Styling of settings page!  
- * Message to user about css-classes for styling!
- * Donation through payPal?
- * 
- */

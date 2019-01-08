@@ -60,8 +60,8 @@ function addItem () {
     jQuery(document).ready(function($) {
 
       var data = {
-        'action': 'fancy_rs_update_list',
-        'whatever': output
+        'action': 'fancy_roll_scroll_update',
+        'frs_new_list': output
       };
   
       // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
@@ -74,9 +74,8 @@ function addItem () {
   
   document.getElementById('addItemButton').addEventListener('click', addItem);
   let update = document.getElementsByClassName('remover');
-  console.log(update);
   for(let element of update){
-    element.addEventListener('click', removeItem);
+    element.addEventLisener('click', removeItem);
   }
   let saveButton = document.getElementById('saveChanges');
   saveButton.addEventListener('click', saveList);
