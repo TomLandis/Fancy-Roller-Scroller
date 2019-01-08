@@ -19,10 +19,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /** Create Menu */
-add_action( 'admin_menu', 'my_plugin_menu' );
+add_action( 'admin_menu', 'fancy_roller_scroller_menu' );
 
 
-function my_plugin_menu() {
+function fancy_roller_scroller_menu() {
 	add_options_page( 'My Plugin Options', 'Fancy Roller Scroller', 'manage_options', 'my-unique-identifier', 'fancy_rs_options' );
 }
 /** Save Initial values of list into database */
@@ -59,20 +59,10 @@ function fancy_rs_options() {
 	echo '<button style="font-size:1.6em; background-color:#296d51; color:white; padding: 12px; margin: 5px; border-radius:4px;"  id="addItemButton">Add Another item to the list</button><button style="font-size:1.6em; background-color:#003489; color:white; padding: 12px; margin: 5px; border-radius:4px;" id="saveChanges">SAVE</button>';
 	
 }
-/** The next step is to make the save button write the options to the database */
-/** I 100% agree that the 'custom post type' route is a MUCH better approach. 
- *  I just want the quickest path to a working prototype so I starting building 
- * in a 'one list for the whole site' way.  I know this is far from idea. 
- *  My plan is to refactor once I have a working prototype. 
- *  If you think it's better to rip out what I've got so far that's totally cool too.  
- * I'm down for whatever approach you think is best.  Thanks so much for your help on this. 
- *  The ideas you've thrown out already have been super helpful and 
- * I'm very motiviated to complete this project now!  Thanks! */
 
+add_action( 'wp_ajax_my_action', 'fancy_rs_update_list' );
 
-add_action( 'wp_ajax_my_action', 'my_action' );
-
-function my_action() {
+function fancy_rs_update_list() {
 	global $wpdb; // this is how you get access to the database
 
 	$whatever =  $_POST['whatever'];

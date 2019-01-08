@@ -60,7 +60,7 @@ function addItem () {
     jQuery(document).ready(function($) {
 
       var data = {
-        'action': 'my_action',
+        'action': 'fancy_rs_update_list',
         'whatever': output
       };
   
