@@ -75,7 +75,7 @@ function addItem () {
   document.getElementById('addItemButton').addEventListener('click', addItem);
   let update = document.getElementsByClassName('remover');
   for(let element of update){
-    element.addEventLisener('click', removeItem);
+    element.addEventListener('click', removeItem);
   }
   let saveButton = document.getElementById('saveChanges');
   saveButton.addEventListener('click', saveList);
