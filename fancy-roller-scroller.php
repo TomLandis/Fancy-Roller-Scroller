@@ -39,7 +39,8 @@ function fancy_roller_scroller_options() {
 	}
 	$listo = get_option('ListOfStuff');
 	$theNum = count($listo);
-	$first = $listo[0];
+  $first = $listo[0];
+  
 	echo '<script type="text/javascript" src="'.plugin_dir_url( __FILE__ ).'js/fancy-settings.js"></script>';
   echo '<p class="into" style="font-size:1.6em;color:#003489;">Your list must have<strong> at least</strong> two items. When you like the way things look, press save.</p>
 	';
@@ -101,42 +102,15 @@ wp_die(); // this is required to terminate immediately and return a proper respo
 
 //[fancy_roller_scroller]
 function fancy_roller_scroller( $atts ){
-	wp_enqueue_script('jquery');
+  wp_enqueue_script('jquery');
+  wp_enqueue_style('frs.css', plugin_dir_url( __FILE__).'/css/frs.css');
 	$thelist = get_option('ListOfStuff');
 	$theNum = count($thelist);
 	$formatedList = '';
 	for($i=1;$i< $theNum;$i++) {
 $formatedList = $formatedList.'<p class="frs-list-item" id="thing'.$i.'">'.$thelist[$i].'</p>';
 	}
-	return '<style>
-.outer,
-#listOfThings p {
-  text-align: center;
-}
-.outer h1 {
-  padding-top: 100px;
-}
-#inHere {
-  position: relative;
-  opacity: 0;
-  top: 50px;
-  font-size: 200%;
-}
-#listOfThings {
-  position: relative;
-}
-#listOfThings p {
-  margin: 0 !important;
-  padding: 0;
-  position: absolute;
-  font-size: 1em;
-  margin-bottom: -2em;
-  opacity: 0;
-}
-.outer{
-}
-	</style>
-	
+	return '
 	<div class="outer frs-list-wrap">
 	<h1 id="topText" class="topText frs-top-text">'.$thelist[0].'</h1>
 	<div id="listOfThings">

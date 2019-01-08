@@ -1,0 +1,27 @@
+
+.outer,
+#listOfThings p {
+  text-align: center;
+}
+.outer h1 {
+  padding-top: 100px;
+}
+#inHere {
+  position: relative;
+  opacity: 0;
+  top: 50px;
+  font-size: 200%;
+}
+#listOfThings {
+  position: relative;
+}
+#listOfThings p {
+  margin: 0 !important;
+  padding: 0;
+  position: absolute;
+  font-size: 1em;
+  margin-bottom: -2em;
+  opacity: 0;
+}
+
+	
