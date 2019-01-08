@@ -60,8 +60,8 @@ function addItem () {
     jQuery(document).ready(function($) {
 
       var data = {
-        'action': 'my_action',
-        'whatever': output
+        'action': 'update_fancy_roller_scroller_items',
+        'fancy_roller_scroller_updating': output
       };
   
       // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
