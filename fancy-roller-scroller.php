@@ -19,11 +19,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 
 /** Create Menu */
-add_action( 'admin_menu', 'fancy_roller_menu' );
+add_action( 'admin_menu', 'my_plugin_menu' );
 
 
-function fancy_roller_menu() {
-	add_options_page( 'My Plugin Options', 'Fancy Roller Scroller', 'manage_options', 'setup-fancy-roller-scroller', 'fancy_roller_options' );
+function my_plugin_menu() {
+	add_options_page( 'My Plugin Options', 'Fancy Roller Scroller', 'manage_options', 'my-unique-identifier', 'fancy_rs_options' );
 }
 /** Save Initial values of list into database */
 function activateFancyRoller(){
@@ -33,7 +33,7 @@ function activateFancyRoller(){
 
 register_activation_hook( __FILE__, 'activateFancyRoller');
 /** pull details from DB */
-function fancy_roller_options() {
+function fancy_rs_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
@@ -70,12 +70,12 @@ function fancy_roller_options() {
  * I'm very motiviated to complete this project now!  Thanks! */
 
 
-add_action( 'wp_ajax_my_action', 'update_fancy_roller_scroller_items' );
+add_action( 'wp_ajax_my_action', 'my_action' );
 
-function update_fancy_roller_scroller_items() {
+function my_action() {
 	global $wpdb; // this is how you get access to the database
 
-	$whatever =  $_POST['fancy_roller_scroller_updating'];
+	$whatever =  $_POST['whatever'];
 
 	update_option('ListOfStuff', $whatever);
 
