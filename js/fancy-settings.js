@@ -12,6 +12,7 @@ function addItem () {
     let newInput = document.createElement('input');
     newInput.id = 'item-' + num;
     newInput.setAttribute('value', 'new list item');
+    newInput.style.cssText = "font-size:1.5em;";
     let newLabel = document.createElement('label');
   let textString = '#' + num + '  Item';
     let labelText = document.createTextNode(textString);

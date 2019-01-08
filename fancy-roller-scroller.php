@@ -41,17 +41,22 @@ function my_plugin_options() {
 	$theNum = count($listo);
 	$first = $listo[0];
 	echo '<script type="text/javascript" src="'.plugin_dir_url( __FILE__ ).'js/fancy-settings.js"></script>';
-	echo '<p>Your list must have<strong> at least</strong> two items. When you like the way things look, press save.</p>
-	<button id="saveChanges">SAVE</button>';
-	echo '<h3><input id="aboveText" value="'.$first.'"> &#11013; Text above rolling list</h3>';
+  echo '<p class="into" style="font-size:1.6em;color:#003489;">Your list must have<strong> at least</strong> two items. When you like the way things look, press save.</p>
+	';
+	echo '<h3><input style="font-size:1.5em;" id="aboveText" value="'.$first.'"> &#11013; Text above rolling list</h3>';
 	echo '<div id="list-wrap">';
 	for($i=1;$i< $theNum;$i++){
-		echo '<p><input id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item</p>';
+    if($i>3){
+      echo '<p><input style="font-size:1.5em;" id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item<button id="'.$i.'" class="remover">X</button></p>';
+    }else{
+      echo '<p><input style="font-size:1.5em;" id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item</p>';
+    }
+		
 	}
 	
 	
 	echo '</div>';
-	echo '<button id="addItemButton">Add Another item to the list</button>';
+	echo '<button style="font-size:1.6em; background-color:#296d51; color:white; padding: 12px; margin: 5px; border-radius:4px;"  id="addItemButton">Add Another item to the list</button><button style="font-size:1.6em; background-color:#003489; color:white; padding: 12px; margin: 5px; border-radius:4px;" id="saveChanges">SAVE</button>';
 	
 }
 /** The next step is to make the save button write the options to the database */
