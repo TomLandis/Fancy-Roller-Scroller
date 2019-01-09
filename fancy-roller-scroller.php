@@ -51,7 +51,7 @@ function fancy_roller_scroller_options() {
     }else{
       echo '<p><input style="font-size:1.5em;" id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item</p>';
     }
-		
+	
 	}
 	
 	
