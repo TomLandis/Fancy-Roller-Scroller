@@ -4,7 +4,7 @@
  * Plugin URI: https://iwillmakeyour.website/fancy-roller-scroller
  * Description: add a rolling list to your page.
  * Author: Tom Landis
- * Version: 0.0.1
+ * Version: 1.0.0
  * Author URI: https://iwillmakeyour.website
  * License: GPLv2 or later
  * Text Domain: fancy-roller-scroller
@@ -40,8 +40,7 @@ function fancy_roller_scroller_options() {
 	$listo = get_option('ListOfStuff');
 	$theNum = count($listo);
   $first = $listo[0];
-  
-	echo '<script type="text/javascript" src="'.plugin_dir_url( __FILE__ ).'js/fancy-settings.js"></script>';
+  wp_enqueue_script('fancy-settings.js', plugin_dir_url( __FILE__ ).'js/fancy-settings.js');
   echo '<p class="into" style="font-size:1.6em;color:#003489;">Your list must have<strong> at least</strong> two items. When you like the way things look, press save.</p>
 	';
 	echo '<h3><input style="font-size:1.5em;" id="aboveText" value="'.$first.'"> &#11013; Text above rolling list</h3>';
