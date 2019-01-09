@@ -60,16 +60,6 @@ function fancy_roller_scroller_options() {
 	echo '<button style="font-size:1.6em; background-color:#296d51; color:white; padding: 12px; margin: 5px; border-radius:4px;"  id="addItemButton">Add Another item to the list</button><button style="font-size:1.6em; background-color:#003489; color:white; padding: 12px; margin: 5px; border-radius:4px;" id="saveChanges">SAVE</button>';
 	
 }
-/** The next step is to make the save button write the options to the database */
-/** I 100% agree that the 'custom post type' route is a MUCH better approach. 
- *  I just want the quickest path to a working prototype so I starting building 
- * in a 'one list for the whole site' way.  I know this is far from idea. 
- *  My plan is to refactor once I have a working prototype. 
- *  If you think it's better to rip out what I've got so far that's totally cool too.  
- * I'm down for whatever approach you think is best.  Thanks so much for your help on this. 
- *  The ideas you've thrown out already have been super helpful and 
- * I'm very motiviated to complete this project now!  Thanks! */
-
 
 add_action( 'wp_ajax_fancy_roll_scroll_update', 'fancy_roll_scroll_update' );
 
@@ -104,6 +94,7 @@ wp_die(); // this is required to terminate immediately and return a proper respo
 function fancy_roller_scroller( $atts ){
   wp_enqueue_script('jquery');
   wp_enqueue_style('frs.css', plugin_dir_url( __FILE__).'/css/frs.css');
+  wp_enqueue_script('frs.js', plugin_dir_url( __FILE__ ).'js/frs.js');
 	$thelist = get_option('ListOfStuff');
 	$theNum = count($thelist);
 	$formatedList = '';
@@ -116,61 +107,6 @@ $formatedList = $formatedList.'<p class="frs-list-item" id="thing'.$i.'">'.$thel
 	<div id="listOfThings">
 	  <div id="inHere" class="listItem"> &nbsp; </div>
 	 '.$formatedList.'
-	</div>
-	<script type="text/javascript">
-	window.onload = function() {
-	var listo = document.getElementById("listOfThings");
-
-var numOfItems = listo.children.length - 1;
-let iter = 1;
-
-
-	
-function sliderOut() {
-  jQuery("#inHere").animate(
-    {
-      opacity: 0,
-      top: "-50px"
-    },
-    250,
-    function() {
-      document.getElementById("inHere").style.top = "50px";
-      setTimeout(function() {changer();}, 10);
-    }
-  );
-}
-function sliderUp() {
-  jQuery("#inHere").animate(
-    {
-      opacity: 1,
-      top: "0px"
-    },
-    250,
-    function() {
-    }
-  );
-}
-function changer() {
- 
-  let target = "thing" + iter;
-  let targ = document.getElementById(target);
-  document.getElementById("inHere").innerHTML = targ.innerHTML;
-
-  sliderUp();
-
-  setTimeout(function() {
-    sliderOut();
-    if (iter == numOfItems) {
-      iter = 1;
-    } else {
-      iter++;
-    }
-  }, 1400);
-}
-
-changer();
-}
-</script>	
-	';
+	</div>';
 }
 add_shortcode( 'fancy_roller_scroller', 'fancy_roller_scroller' );
