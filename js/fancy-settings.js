@@ -67,7 +67,7 @@ function addItem () {
       // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
       jQuery.post(ajaxurl, data, function(response) {
        // console.log(response);
-       jQuery('#success-mess').append(response);
+       jQuery('#success-mess').append(response).slideDown(800);
       });
     });
   

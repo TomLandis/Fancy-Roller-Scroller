@@ -46,6 +46,7 @@ function fancy_roller_scroller_options() {
 	wp_enqueue_style( 'material', 'https://fonts.googleapis.com/icon?family=Material+Icons' );
 	wp_enqueue_script('fancy-settings.js', plugin_dir_url( __FILE__ ).'js/fancy-settings.js');
 	wp_enqueue_style('fancy-style.css', plugin_dir_url( __FILE__ ).'css/fancy-settings.css');
+	settings_errors();
 	echo '<div id="success-mess"></div><div class="frs-callout"><p class="intro"><i class="material-icons frs-iconic">people</i>Your list must have<strong> at least</strong> two items.';
 	echo '<p class="intro"><i class="material-icons frs-iconic">save</i> When you like the way things look, press save.</p>';
 	echo '<p class="intro"><i class="material-icons frs-iconic">code</i>Put the shortcode <code>[fancy_roller_scoller]</code> where you want the list to appear.</p></div>';

@@ -9,6 +9,10 @@
     margin-top:0px;
     margin-bottom:0px;
     border-bottom: 1px solid #003489;
+    transition: 0.2s all ease;
+}
+.intro:hover{
+    transform: translateX(-20px);
 }
 .frs-iconic{
     border-left: 6px solid #003489;
