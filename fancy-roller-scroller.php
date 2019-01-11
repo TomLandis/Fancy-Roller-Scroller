@@ -62,7 +62,7 @@ function fancy_roller_scroller_options() {
 	
 	
 	echo '</div>';
-	echo '<button class="frs-add-item"  id="addItemButton">Add Item</button><button class="frs-save-list" id="saveChanges">SAVE</button>';
+	echo '<button class="frs-add-item"  id="addItemButton"><i class="material-icons">playlist_add</i> &nbsp; Add Item</button><button class="frs-save-list" id="saveChanges"><i class="material-icons">save</i> &nbsp; SAVE</button>';
 	
 }
 
