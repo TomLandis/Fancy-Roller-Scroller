@@ -1,4 +1,6 @@
-
+.frs-callout{
+    margin-top: 30px;
+}
 
 
 .intro{
@@ -53,8 +55,13 @@
 }
 .frs-add-item:hover{
     cursor:pointer;
-border: 8px solid #296d51;
-padding: 6px;
+    cursor:pointer;
+    border: 8px solid #296d51;
+    padding: 6px;
+    border-left:0px;
+    border-right: 0px;
+    background-color:#102d21;
+    color: white;
 }
 .frs-save-list{
    font-size:1.6em;
@@ -78,4 +85,6 @@ color: white;
 }
 .frs-full-list{
     background-color:#d7dfea;
+    border-left:6px solid #5696ff;
+    padding: 1em;
 }

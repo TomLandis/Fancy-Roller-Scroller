@@ -56,7 +56,7 @@ function addItem () {
       let targ = kids[i].firstChild.value;
       output.push(targ);
     }
-    console.log(output);
+    //console.log(output);
     jQuery(document).ready(function($) {
 
       var data = {
@@ -66,7 +66,8 @@ function addItem () {
   
       // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
       jQuery.post(ajaxurl, data, function(response) {
-        alert(response);
+       // console.log(response);
+       jQuery('#success-mess').append(response);
       });
     });
   
