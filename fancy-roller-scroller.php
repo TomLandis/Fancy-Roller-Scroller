@@ -49,7 +49,7 @@ function fancy_roller_scroller_options() {
 	echo '<div class="frs-callout"><p class="intro"><i class="material-icons frs-iconic">people</i>Your list must have<strong> at least</strong> two items.';
 	echo '<p class="intro"><i class="material-icons frs-iconic">save</i> When you like the way things look, press save.</p>';
 	echo '<p class="intro"><i class="material-icons frs-iconic">code</i>Put the shortcode <code>[fancy_roller_scoller]</code> where you want the list to appear.</p></div>';
-	echo '<h3><input class="frs-big-input" id="aboveText" value="'.$first.'"> &#11013; Text above rolling list</h3>';
+	echo '<div class="frs-full-list"><h3><input class="frs-big-input" id="aboveText" value="'.$first.'"> &#11013; Text above rolling list</h3>';
 	echo '<div id="list-wrap">';
 	for($i=1;$i< $theNum;$i++){
     if($i>2){
@@ -61,7 +61,7 @@ function fancy_roller_scroller_options() {
 	}
 	
 	
-	echo '</div>';
+	echo '</div></div>';
 	echo '<button class="frs-add-item"  id="addItemButton"><i class="material-icons">playlist_add</i> &nbsp; Add Item</button><button class="frs-save-list" id="saveChanges"><i class="material-icons">save</i> &nbsp; SAVE</button>';
 	
 }
