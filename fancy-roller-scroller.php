@@ -18,6 +18,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 
+
+
 /** Create Menu */
 add_action( 'admin_menu', 'fancy_roller_scroller_menu' );
 
@@ -37,26 +39,30 @@ function fancy_roller_scroller_options() {
 	if ( !current_user_can( 'manage_options' ) )  {
 		wp_die( __( 'You do not have sufficient permissions to access this page.' ) );
 	}
+
 	$listo = get_option('ListOfStuff');
 	$theNum = count($listo);
-  $first = $listo[0];
-  wp_enqueue_script('fancy-settings.js', plugin_dir_url( __FILE__ ).'js/fancy-settings.js');
-  echo '<p class="into" style="font-size:1.6em;color:#003489;">Your list must have<strong> at least</strong> two items. When you like the way things look, press save.</p>
-	';
-	echo '<h3><input style="font-size:1.5em;" id="aboveText" value="'.$first.'"> &#11013; Text above rolling list</h3>';
+	$first = $listo[0];
+	wp_enqueue_style( 'material', 'https://fonts.googleapis.com/icon?family=Material+Icons' );
+	wp_enqueue_script('fancy-settings.js', plugin_dir_url( __FILE__ ).'js/fancy-settings.js');
+	wp_enqueue_style('fancy-style.css', plugin_dir_url( __FILE__ ).'css/fancy-settings.css');
+	echo '<div class="frs-callout"><p class="intro"><i class="material-icons frs-iconic">people</i>Your list must have<strong> at least</strong> two items.';
+	echo '<p class="intro"><i class="material-icons frs-iconic">save</i> When you like the way things look, press save.</p>';
+	echo '<p class="intro"><i class="material-icons frs-iconic">code</i>Put the shortcode <code>[fancy_roller_scoller]</code> where you want the list to appear.</p></div>';
+	echo '<h3><input class="frs-big-input" id="aboveText" value="'.$first.'"> &#11013; Text above rolling list</h3>';
 	echo '<div id="list-wrap">';
 	for($i=1;$i< $theNum;$i++){
-    if($i>3){
-      echo '<p><input style="font-size:1.5em;" id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item<button id="'.$i.'" class="remover">X</button></p>';
+    if($i>2){
+      echo '<p><input class="frs-big-input" id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item</label><button id="'.$i.'" class="remover">X</button></p>';
     }else{
-      echo '<p><input style="font-size:1.5em;" id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item</p>';
+      echo '<p><input class="frs-big-input" id="item-'.$i.'" value="'.$listo[$i].'"></input> <label for="item-'.$i.'">#'.$i.' Item</p>';
     }
 	
 	}
 	
 	
 	echo '</div>';
-	echo '<button style="font-size:1.6em; background-color:#296d51; color:white; padding: 12px; margin: 5px; border-radius:4px;"  id="addItemButton">Add Another item to the list</button><button style="font-size:1.6em; background-color:#003489; color:white; padding: 12px; margin: 5px; border-radius:4px;" id="saveChanges">SAVE</button>';
+	echo '<button class="frs-add-item"  id="addItemButton">Add Item</button><button class="frs-save-list" id="saveChanges">SAVE</button>';
 	
 }
 
