@@ -49,21 +49,16 @@ function addItem () {
     let list = document.getElementById('list-wrap');
     let kids = list.children;
     for(let i=0;i<kids.length;i++){
-    //  console.log(kids[i].firstChild.value)
       let targ = kids[i].firstChild.value;
       output.push(targ);
     }
-    //console.log(output);
     jQuery(document).ready(function($) {
 
       var data = {
         'action': 'fancy_roll_scroll_update',
         'frs_new_list': output
       };
-  
-      // since 2.8 ajaxurl is always defined in the admin header and points to admin-ajax.php
       jQuery.post(ajaxurl, data, function(response) {
-       // console.log(response);
        jQuery('#success-mess').append(response).slideDown(800);
       });
     });
