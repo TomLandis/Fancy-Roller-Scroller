@@ -1,7 +1,4 @@
 document.addEventListener('DOMContentLoaded', function(){
-    // do something
-
-
 function addItem () {
     //find out how long the list is
   let num = document.getElementById('list-wrap'); 
