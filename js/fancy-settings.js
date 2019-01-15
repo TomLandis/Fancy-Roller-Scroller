@@ -43,6 +43,7 @@ function addItem () {
     adjustNumbering();
   }
   function saveList(){
+    
     let above = document.getElementById('aboveText');
     let output = [];
     output.push(above.value);
@@ -59,7 +60,8 @@ function addItem () {
         'frs_new_list': output
       };
       jQuery.post(ajaxurl, data, function(response) {
-       jQuery('#success-mess').append(response).slideDown(800);
+       let sucMes = document.getElementById('success-mess');
+       sucMes.style.opacity = "1";
       });
     });
   

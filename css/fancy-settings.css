@@ -1,8 +1,14 @@
 .frs-callout{
-    margin-top: 30px;
+    margin-top: 10px;
 }
-
-
+#success-mess{
+    font-size: 1.6em;
+    color:#06662f;
+    opacity:0;
+    margin-top:0px;
+    margin-bottom:0px;
+    border-bottom: 1px solid #06662f;
+}
 .intro{
     font-size:1.6em;
     color:#003489;
@@ -10,15 +16,25 @@
     margin-bottom:0px;
     border-bottom: 1px solid #003489;
     transition: 0.2s all ease;
+    opacity:0.8;
 }
 .intro:hover{
-    transform: translateX(-20px);
+    opacity: 1;
 }
 .frs-iconic{
     border-left: 6px solid #003489;
     margin-right: 8px;
     height: 32px;
     padding: 0.5em;
+}
+.frs-iconic-suc{
+    border-left: 6px solid #06662f;
+    margin-right: 8px;
+    height: 32px;
+    padding: 0.5em;
+}
+.frs-iconic-head{
+    transform:rotateX(-90deg);
 }
 .frs-big-input{
     font-size:1.5em;
