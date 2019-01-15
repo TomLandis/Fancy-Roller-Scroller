@@ -2,6 +2,8 @@
     margin-top: 10px;
 }
 #success-mess{
+    transition: 0.4s all ease;
+    transform: translateX(-100px);
     font-size: 1.6em;
     color:#06662f;
     opacity:0;
@@ -86,11 +88,11 @@
 .frs-add-item:hover{
     cursor:pointer;
     cursor:pointer;
-    border: 8px solid #296d51;
+    border: 8px solid #102d21;
     padding: 6px;
     border-left:0px;
     border-right: 0px;
-    background-color:#102d21;
+    background-color:#296d51;
     color: white;
 }
 .frs-save-list{
@@ -117,4 +119,5 @@ color: white;
     background-color:#d7dfea;
     border-left:6px solid #5696ff;
     padding: 1em;
+    transition: 0.2s all ease;
 }
