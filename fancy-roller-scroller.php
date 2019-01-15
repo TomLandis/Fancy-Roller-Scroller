@@ -47,7 +47,7 @@ function fancy_roller_scroller_options() {
 	wp_enqueue_script('fancy-settings.js', plugin_dir_url( __FILE__ ).'js/fancy-settings.js');
 	wp_enqueue_style('fancy-style.css', plugin_dir_url( __FILE__ ).'css/fancy-settings.css');
 	settings_errors();
-	echo '<h1>Fancy Roller Scroller Settings<i class="material-icons frs-iconic-head">format_paint</i></h1>';
+	echo '<h1 class="heading"><span class="painted">Fancy Roller Scroller Settings</span><i class="material-icons frs-iconic-head">format_paint</i></h1>';
 	echo '<div class="frs-callout"><p id="success-mess"><i class="material-icons frs-iconic-suc">check_circle_outline</i>Your list has been updated.</p>';
 	echo '<p class="intro"><i class="material-icons frs-iconic">people</i>Your list must have<strong> at least</strong> two items.</p>';
 	echo '<p class="intro"><i class="material-icons frs-iconic">save</i> When you like the way things look, press save.</p>';

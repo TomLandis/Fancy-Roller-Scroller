@@ -33,8 +33,18 @@
     height: 32px;
     padding: 0.5em;
 }
+.painted{
+    font-size:0.85em;
+    color: white;
+    background-color:#5696ff;
+    padding-right: 20px;
+    padding-left:44px;
+    margin-left:-22px;
+}
 .frs-iconic-head{
-    transform:rotateX(-90deg);
+    transform:rotate(-90deg) translateX(-13px);
+    font-size:48px;
+    color: #5696ff;
 }
 .frs-big-input{
     font-size:1.5em;
