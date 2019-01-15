@@ -3,4 +3,4 @@ This is a WordPress Plugin for showing rotating text
 
 Anyone is welcome to submit pull requests and issues. 
 
-The Plugin should be ready for launch early 2019.
+Version 2.0 is currently in the works the plugin has been accepted to the WordPress repository and can be viewed here: https://wordpress.org/plugins/fancy-roller-scroller/
